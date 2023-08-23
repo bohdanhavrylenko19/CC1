@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         .frame {
             border: 2px solid #ff0080;
             padding: 20px;
@@ -114,21 +114,21 @@
             window.location.reload();
         }
 
-        // Починаємо відлік таймера
+        
         function startCountdown() {
             updateCountdown();
             const timer = setInterval(function () {
                 countdown--;
                 if (countdown <= 0) {
                     clearInterval(timer);
-                    reloadPage(); // Оновлюємо сторінку після закінчення таймера
+                    reloadPage(); 
                 } else {
                     updateCountdown();
                 }
-            }, 1000); // Оновлення кожну секунду
+            }, 1000); 
         }
 
-        // Запускаємо відлік таймера при завантаженні сторінки
+      
         startCountdown();
     </script>
 </body>
