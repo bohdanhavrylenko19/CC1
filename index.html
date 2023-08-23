@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервер недоступний</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .frame {
+            border: 2px solid #ff0080;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .discord-frame {
+            border: 2px solid #ff0080;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff0080;
+        }
+
+        h2 {
+            color: #ff0080;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .discord-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .discord-img {
+            max-width: 200px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .discord-img:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .frame, .discord-frame {
+                padding: 10px;
+            }
+        }
+        .reload-button {
+            display: inline-block;
+            background-color: #ff0080;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .reload-button:hover {
+            background-color: #ff0055;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="frame">
+            <h1>Сервер тимчасово недоступний</h1>
+            <p>Вибачте, на даний момент сервер тимчасово недоступний. Будь ласка, спробуйте зайти пізніше.</p>
+        </div>
+        <div class="discord-frame">
+            <h2>Приєднуйтесь до нашого Discord сервера</h2>
+            <p>Отримуйте актуальну інформацію та спілкуйтесь з нами на Discord:</p>
+            <a href="https://discord.gg/4ECbKdxh" class="discord-link">
+                <img src="discord-logo.png" alt="Discord" class="discord-img">
+            </a>
+
+            <button class="reload-button" id="reload-button" onclick="reloadPage()">Reload Page (30s)</button>
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        let countdown = 30;
+        const countdownDisplay = document.getElementById("reload-button");
+
+        function updateCountdown() {
+            countdownDisplay.innerText = `Reload Page (${countdown}s)`;
+        }
+
+        function reloadPage() {
+            window.location.reload();
+        }
+
+        // Починаємо відлік таймера
+        function startCountdown() {
+            updateCountdown();
+            const timer = setInterval(function () {
+                countdown--;
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    reloadPage(); // Оновлюємо сторінку після закінчення таймера
+                } else {
+                    updateCountdown();
+                }
+            }, 1000); // Оновлення кожну секунду
+        }
+
+        // Запускаємо відлік таймера при завантаженні сторінки
+        startCountdown();
+    </script>
+</body>
+</html>
